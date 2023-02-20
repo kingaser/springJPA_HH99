@@ -1,4 +1,4 @@
-package com.example.board.dto;
+package com.example.board.board.dto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 public class BoardRequestDto {
 
     private String title;
-    private String author;
+    private String username;
     private String contents;
-    private String password;
+
 }

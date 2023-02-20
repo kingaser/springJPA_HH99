@@ -1,17 +1,16 @@
-package com.example.board.dto;
+package com.example.board.board.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import org.springframework.http.HttpStatus;
 
 @Getter
-@Setter
 @NoArgsConstructor
-public class DeleteMessageDto {
+public class MessageDto {
 
     private String message;
 
-    public DeleteMessageDto(String message) {
+    public MessageDto(String message) {
         this.message = message;
     }
 }

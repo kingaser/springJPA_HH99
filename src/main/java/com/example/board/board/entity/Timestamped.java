@@ -1,7 +1,6 @@
-package com.example.board.entity;
+package com.example.board.board.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -11,7 +10,6 @@ import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
-@Getter
 @MappedSuperclass
 @RequiredArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
@@ -24,4 +22,12 @@ public class Timestamped {
     @LastModifiedDate
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyyMMddHHmmss", timezone = "Asia/Seoul")
     private LocalDateTime modifiedAt;
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getModifiedAt() {
+        return modifiedAt;
+    }
 }

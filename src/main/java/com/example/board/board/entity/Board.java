@@ -1,8 +1,7 @@
-package com.example.board.entity;
+package com.example.board.board.entity;
 
 
-import com.example.board.dto.BoardRequestDto;
-import com.example.board.dto.BoardResponseDto;
+import com.example.board.board.dto.BoardRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -20,7 +19,7 @@ public class Board extends Timestamped {
     private String title;
 
     @Column(nullable = false)
-    private String author;
+    private String username;
 
     @Column(nullable = false)
     private String contents;
@@ -28,16 +27,20 @@ public class Board extends Timestamped {
     @Column(nullable = false)
     private String password;
 
-    public Board(BoardRequestDto requestDto) {
+    @ManyToOne
+    @JoinColumn(name = "User_Id", nullable = false)
+    private User user;
+
+    public Board(BoardRequestDto requestDto, Long userId) {
         this.title = requestDto.getTitle();
-        this.author = requestDto.getAuthor();
+        this.username = requestDto.getUsername();
         this.contents = requestDto.getContents();
-        this.password = requestDto.getPassword();
     }
 
     public void update(BoardRequestDto requestDto) {
         this.title = requestDto.getTitle();
-        this.author = requestDto.getAuthor();
+        this.username = requestDto.getUsername();
         this.contents = requestDto.getContents();
     }
+
 }
